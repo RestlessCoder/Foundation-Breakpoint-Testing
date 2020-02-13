@@ -1,0 +1,94 @@
+.relative     { position: relative; }
+.absolute     { position: absolute; }
+.static       { position: static; }
+.fixed        { position: fixed; }
+
+
+@mixin absolute-center($horizontal: true, $vertical: true) {
+
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+  }
+}
+
+&.align__hor {
+  @include absolute-center(true, false);
+}
+
+&.align__vert {
+  @include absolute-center(false, true);
+}
+
+&.align__hor-vert {
+  @include absolute-center;
+}
+
+
+
+
+
+
+
+// .vert-align {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+//   -ms-transform: translateY(-50%);
+// }
+
+// @mixin vert-align {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+//   -ms-transform: translateY(-50%);
+// }
+
+// @mixin hoz-align {
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   -webkit-transform: translateX(-50%);
+//   -ms-transform: translateX(-50%);
+// }
+
+// .vert-hoz-align {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   -webkit-transform: translate(-50%, -50%);
+//   -ms-transform: translate(-50%, -50%);
+//   width: 50%;
+//   bottom: initial;
+// }
+
+// @mixin vert-hoz-align {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   -webkit-transform: translate(-50%, -50%);
+//   -ms-transform: translate(-50%, -50%);
+//   width: 50%;
+//   bottom: initial;
+// }

@@ -1,0 +1,319 @@
+$space-values : (
+  0,4,8,12,16,20,24,28,32,40,48,56,64,80,100,120,140,160,180
+) !default;
+
+$space-prefixes : (
+  p  : padding,
+  pt : padding-top,
+  pb : padding-bottom,
+  pl : padding-left,
+  pr : padding-right,
+  m  : margin,
+  mt : margin-top,
+  mb : margin-bottom,
+  ml : margin-left,
+  mr : margin-right,
+) !default;
+
+$grid-breakpoints-custom: (
+  : 0,
+  l: 1024px,
+  m: 1023px,
+  s: 640px
+) !default;
+
+
+$breakpoints : $grid-breakpoints-custom;
+
+
+@mixin make-space($values, $prefixes, $breakpoints) {
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+    // if xs value = 0, set it global without media queries
+    @if($breakpoint-value == 0) {
+      @each $attr-short, $attr-long in $prefixes {
+        @each $value in $values {
+          // .#{$breakpoint-name}-#{$attr-short}-#{$value} {
+          .#{$attr-short}--#{$value} {
+            #{$attr-long}: #{$value}#{'px'} !important;
+          }
+        }
+      }
+    }
+
+    // large only
+    @elseif($breakpoint-value == 1024px) {
+      @media screen and (min-width: $breakpoint-value) {
+        @each $attr-short, $attr-long in $prefixes {
+          @each $value in $values {
+            .#{$attr-short}--#{$breakpoint-name}--#{$value} {
+              #{$attr-long}: #{$value}#{'px'} !important;
+            }
+          }
+        }
+      }
+    }
+    
+    // medium + small
+    @else {
+      @media screen and (max-width: $breakpoint-value) {
+        @each $attr-short, $attr-long in $prefixes {
+          @each $value in $values {
+            .#{$attr-short}--#{$breakpoint-name}--#{$value} {
+              #{$attr-long}: #{$value}#{'px'} !important;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@include make-space($space-values, $space-prefixes, $breakpoints);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------
+----------------------------------------------------
+Padding & Margin
+----------------------------------------------------
+--------------------------------------------------*/
+
+// $mp--sides: (
+// "": "",
+// "t": "top",
+// "b": "bottom",
+// "l": "left",
+// "r": "right",
+// );
+
+// $breakpoints: (
+// "small": 0,
+// "medium": 39.9375em,
+// "large": 63.9375em,
+// );
+
+// @each $breakName, $breakValue in $breakpoints {
+//   @each $sideName, $sideValue in $mp--sides {
+//     @for $i from 0 through 10 {
+      
+//       $property: if($sideName == '', '', -#{$sideValue});
+//       $space: $i;
+//       // $space: $i * 10;
+//       $selector: '';
+
+//       @if $breakName != "" {
+//         $selector: #{$sideName}-#{$breakName}-#{$i};
+//       } @else {
+//         $selector: #{$sideName}-#{$i};
+//       }
+
+//       @if $breakName != "" {
+//         @media (min-width: $breakValue) {
+//           .mxxx#{$selector} {
+//             margin#{$property}: #{$space}rem;
+//           }
+//           .pxxx#{$selector} {
+//             padding#{$property}: #{$space}rem;
+//           }
+//         }
+//       } @else {
+//         .myyy#{$selector} {
+//           margin#{$property}: #{$space}rem;
+//         }
+//         .pyyy#{$selector} {
+//           padding#{$property}: #{$space}rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+Margin & Padding
+----------------------------------------------------
+----------------------------------------------------
+--------------------------------------------------*/
+// $mp-size: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12); // Adjust this to include the pixel amounts you need.
+// $mp-sides: (top, bottom, left, right); // Leave this variable alone
+
+// @each $space in $mp-size {
+//   @each $side in $mp-sides {
+//     .m#{str-slice($side, 0, 1)}--#{$space} {
+//       margin-#{$side}: #{$space}rem;
+//     }
+//     .p#{str-slice($side, 0, 1)}--#{$space} {
+//       padding-#{$side}: #{$space}rem;
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 63.9375em) {
+//   @each $space in $mp-size {
+//     @each $side in $mp-sides {
+//       .m#{str-slice($side, 0, 1)}--large--#{$space} {
+//         margin-#{$side}: #{$space}rem !important;
+//       }
+//       .p#{str-slice($side, 0, 1)}--large--#{$space} {
+//         padding-#{$side}: #{$space}rem !important;
+//       }
+//     }
+//   }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------
+----------------------------------------------------
+Basic Loop
+----------------------------------------------------
+--------------------------------------------------*/
+// @for $i from 1 through 3 {
+//   .mt--#{$i} {margin-top: $i;}
+//   .mb--#{$i} {margin-bottom: $i;}
+//   .ml--#{$i} {margin-left: $i;}
+//   .mr--#{$i} {margin-right: $i;}
+//   .pt--#{$i} {padding-bottom: $i;}
+//   .pb--#{$i} {padding-top: $i;}
+//   .pl--#{$i} {padding-left: $i;}
+//   .pr--#{$i} {padding-right: $i;}
+// }
+// @media screen and (min-width: 63.9375em) {
+//   @for $i from 1 through 3 {
+//     .mt--large--#{$i} {margin-top: $i;}
+//     .mb--large--#{$i} {margin-bottom: $i;}
+//     .ml--large--#{$i} {margin-left: $i;}
+//     .mr--large--#{$i} {margin-right: $i;}
+//     .pt--large--#{$i} {padding-bottom: $i;}
+//     .pb--large--#{$i} {padding-top: $i;}
+//     .pl--large--#{$i} {padding-left: $i;}
+//     .pr--large--#{$i} {padding-right: $i;}
+//   }
+// }
+// @media screen and (max-width: 63.9375em) {
+//   @for $i from 1 through 3 {
+//     .mt--medium--#{$i} {margin-top: $i;}
+//     .mb--medium--#{$i} {margin-bottom: $i;}
+//     .ml--medium--#{$i} {margin-left: $i;}
+//     .mr--medium--#{$i} {margin-right: $i;}
+//     .pt--medium--#{$i} {padding-bottom: $i;}
+//     .pb--medium--#{$i} {padding-top: $i;}
+//     .pl--medium--#{$i} {padding-left: $i;}
+//     .pr--medium--#{$i} {padding-right: $i;}
+//   }
+// }
+// @media only screen and (max-width: 39.9375em) {
+//   @for $i from 1 through 3 {
+//     .mt--small--#{$i} {margin-top: $i;}
+//     .mb--small--#{$i} {margin-bottom: $i;}
+//     .ml--small--#{$i} {margin-left: $i;}
+//     .mr--small--#{$i} {margin-right: $i;}
+//     .pt--small--#{$i} {padding-bottom: $i;}
+//     .pb--small--#{$i} {padding-top: $i;}
+//     .pl--small--#{$i} {padding-left: $i;}
+//     .pr--small--#{$i} {padding-right: $i;}
+//   }
+// }
+
+
+
+
+
+// $margin-padding: (
+//   xxx: margin-top,
+//   yyy: margin-bottom
+// );
+
+// @each $key, $value in $margin-padding {  
+//   @for $value from 0 through 10 {
+//     .#{$key}--#{$value} {margin-bottom: $value;}
+//     .#{$key}--#{$value} {margin-bottom: $value;}
+//   }
+// }

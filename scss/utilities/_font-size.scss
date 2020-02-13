@@ -1,0 +1,64 @@
+$font-values : (
+  0,4,8,10,12,14,16,18,20,22,24,28,32,36,40,48,56,64,80,120,160
+) !default;
+
+$font-prefixes : (
+  size  : font-size,
+) !default;
+
+$grid-breakpoints-custom: (
+  : 0,
+  l: 1024px,
+  m: 1023px,
+  s: 640px
+) !default;
+
+
+$breakpoints : $grid-breakpoints-custom;
+
+
+@mixin make-font($values, $prefixes, $breakpoints) {
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+    // if xs value = 0, set it global without media queries
+    @if($breakpoint-value == 0) {
+      @each $attr-short, $attr-long in $prefixes {
+        @each $value in $values {
+          // .#{$breakpoint-name}-#{$attr-short}-#{$value} {
+          .#{$attr-short}--#{$value} {
+            #{$attr-long}: #{$value}#{'px'};
+          }
+        }
+      }
+    }
+
+    // large only
+    @elseif($breakpoint-value == 1024px) {
+      @media screen and (min-width: $breakpoint-value) {
+        @each $attr-short, $attr-long in $prefixes {
+          @each $value in $values {
+            .#{$attr-short}--#{$breakpoint-name}--#{$value} {
+              #{$attr-long}: #{$value}#{'px'};
+            }
+          }
+        }
+      }
+    }
+    
+    // medium + small
+    @else {
+      @media screen and (max-width: $breakpoint-value) {
+        @each $attr-short, $attr-long in $prefixes {
+          @each $value in $values {
+            .#{$attr-short}--#{$breakpoint-name}--#{$value} {
+              #{$attr-long}: #{$value}#{'px'};
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@include make-font($font-values, $font-prefixes, $breakpoints);

@@ -1,0 +1,88 @@
+/*----------------------------------------------------------------
+------------------------------------------------------------------
+Large
+------------------------------------------------------------------
+----------------------------------------------------------------*/
+@media screen and (min-width: 64em) {
+
+  .large-up-1, .large-up-2, .large-up-3,
+  .large-up-4, .large-up-5, .large-up-6,
+  .large-up-7, .large-up-8 
+  {
+    >.cell  {
+      margin-bottom: 1.875rem;
+    }
+  }
+
+  &.large-up-8 .cell:nth-last-child(-n+8),
+  &.large-up-7 .cell:nth-last-child(-n+7),
+  &.large-up-6 .cell:nth-last-child(-n+6),
+  &.large-up-5 .cell:nth-last-child(-n+5),
+  &.large-up-4 .cell:nth-last-child(-n+4),
+  &.large-up-3 .cell:nth-last-child(-n+3),
+  &.large-up-2 .cell:nth-last-child(-n+2),
+  &.large-up-1 .cell:nth-last-child(-n+1) {
+    margin-bottom: 0 !important;
+  }
+
+}
+
+
+/*----------------------------------------------------------------
+------------------------------------------------------------------
+Medium
+------------------------------------------------------------------
+----------------------------------------------------------------*/
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+
+  .medium-up-1, .medium-up-2, .medium-up-3,
+  .medium-up-4, .medium-up-5, .medium-up-6,
+  .medium-up-7, .medium-up-8 
+  {
+    >.cell  {
+      margin-bottom: 1.875rem;
+    }
+  } 
+
+  &.medium-up-8 .cell:nth-last-child(-n+8),
+  &.medium-up-7 .cell:nth-last-child(-n+7),
+  &.medium-up-6 .cell:nth-last-child(-n+6),
+  &.medium-up-5 .cell:nth-last-child(-n+5),
+  &.medium-up-4 .cell:nth-last-child(-n+4),
+  &.medium-up-3 .cell:nth-last-child(-n+3),
+  &.medium-up-2 .cell:nth-last-child(-n+2),
+  &.medium-up-1 .cell:nth-last-child(-n+1) {
+    margin-bottom: 0 !important;
+  }
+
+}
+
+
+/*----------------------------------------------------------------
+------------------------------------------------------------------
+Small
+------------------------------------------------------------------
+----------------------------------------------------------------*/
+@media screen and (max-width: 39.9375em) {
+
+  .small-up-1, .small-up-2, .small-up-3,
+  .small-up-4, .small-up-5, .small-up-6,
+  .small-up-7, .small-up-8 
+  {
+    >.cell  {
+      margin-bottom: 1.875rem;
+    }
+  }
+
+  &.small-up-8 .cell:nth-last-child(-n+8),
+  &.small-up-7 .cell:nth-last-child(-n+7),
+  &.small-up-6 .cell:nth-last-child(-n+6),
+  &.small-up-5 .cell:nth-last-child(-n+5),
+  &.small-up-4 .cell:nth-last-child(-n+4),
+  &.small-up-3 .cell:nth-last-child(-n+3),
+  &.small-up-2 .cell:nth-last-child(-n+2),
+  &.small-up-1 .cell:nth-last-child(-n+1) {
+    margin-bottom: 0 !important;
+  }
+
+}

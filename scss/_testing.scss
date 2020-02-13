@@ -1,0 +1,5 @@
+.testing {
+	@include breakpoint(medium) {
+		padding:2rem;
+	}
+}

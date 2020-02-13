@@ -1,0 +1,18 @@
+@media screen and (min-width: 769px) {
+	.text--l--left			{ text-align: left !important;}
+	.text--l--right 		{ text-align: right !important;}
+	.text--l--center 		{ text-align: center !important;}
+}
+
+@media screen and (max-width: 768px) {
+	.text--m--left			{ text-align: left !important;}
+	.text--m--right 		{ text-align: right !important;}
+	.text--m--center 		{ text-align: center !important;}
+}
+
+@media only screen and (max-width: 639px) {
+	.text--s--left 			{ text-align: left !important;}
+	.text--s--right 		{ text-align: right !important;}
+	.text--s--center 		{ text-align: center !important;}
+	.align--s--center 		{ justify-content: center !important;}
+}

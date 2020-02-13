@@ -1,0 +1,32 @@
+$my-palette: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  success: $success-color,
+  warning: $warning-color,
+  alert: $alert-color,
+  light-gray: $light-gray,
+  medium-gray: $medium-gray,
+  dark-gray: $dark-gray,
+  black: $black,
+  white: $white,
+  blue: #008FBD,
+);
+
+// text colours
+@each $key, $value in $my-palette {
+  .color--#{$key} { color: $value; }
+}
+
+// background colours
+@each $key, $value in $my-palette {
+  .bg--#{$key} { background-color: $value !important; }
+}
+
+// background colours
+@each $key, $value in $my-palette {
+  .button--#{$key} { background-color: $value; }
+}
+
+// @function my-palette($key: 'primary') {
+//   @return map-get($my-palette, $key);
+// }
